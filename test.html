@@ -3,9 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thông Tin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>hello</h1>
+    <header id="header">
+        <h1>Thông Tin Cá Nhân</h1>
+    </header>
+
+    <div id="profile">
+        <div id="anh">
+            <label for="fileInput">
+                <img src="a.jpg" alt="Ảnh đại diện" id="profileImage">
+            </label>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+        </div>
+        <div id="thongtin">
+            <h1 contenteditable="true" id="name">Huỳnh Ngọc Hải </h1>
+            <p><i class="fas fa-birthday-cake"></i> Ngày sinh: <span contenteditable="true" id="dob">18/10/2003</span></p>
+            <p><i class="fas fa-envelope"></i> Email: <span contenteditable="true" id="email">hai099089hai099089@gmail.com</span></p>
+            <p><i class="fas fa-phone"></i> SĐT: <span contenteditable="true" id="phone">013456111</span></p>
+            <p><i class="fas fa-map-marker-alt"></i> Quê quán: <span contenteditable="true" id="address">Phú Yên</span></p>
+            <p><i class="fas fa-heart"></i> Sở thích: <span contenteditable="true" id="hobby">Ngủ, nghe nhạc, chơi game, đá bóng</span></p>
+            <button id="saveBtn">Lưu Thông Tin</button>
+            <button id="detailBtn">Xem Chi Tiết</button>
+        </div>
+    </div>
+
+    <!-- Modal hiển thị ảnh -->
+    <div id="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Hình phóng to">
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Huỳnh Ngọc Hải. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        const profileImage = document.getElementById('profileImage');
+        const fileInput = document.getElementById('fileInput');
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const saveBtn = document.getElementById('saveBtn');
+        document.getElementById("detailBtn").onclick = function() {
+         window.location.href = "detail.html"; // Chuyển đến trang chi tiết
+        };
+
+        profileImage.onclick = function() {
+            modal.style.display = "flex";
+            modalImage.src = this.src;
+        };
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Cho phép thay đổi ảnh đại diện
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Lưu thông tin vào LocalStorage
+        saveBtn.onclick = function() {
+            localStorage.setItem("name", document.getElementById("name").innerText);
+            localStorage.setItem("dob", document.getElementById("dob").innerText);
+            localStorage.setItem("email", document.getElementById("email").innerText);
+            localStorage.setItem("phone", document.getElementById("phone").innerText);
+            localStorage.setItem("address", document.getElementById("address").innerText);
+            localStorage.setItem("hobby", document.getElementById("hobby").innerText);
+            localStorage.setItem("profileImage", profileImage.src);
+            alert("Thông tin đã được lưu!");
+        };
+
+        // Load dữ liệu từ LocalStorage khi mở trang
+        window.onload = function() {
+            if (localStorage.getItem("name")) document.getElementById("name").innerText = localStorage.getItem("name");
+            if (localStorage.getItem("dob")) document.getElementById("dob").innerText = localStorage.getItem("dob");
+            if (localStorage.getItem("email")) document.getElementById("email").innerText = localStorage.getItem("email");
+            if (localStorage.getItem("phone")) document.getElementById("phone").innerText = localStorage.getItem("phone");
+            if (localStorage.getItem("address")) document.getElementById("address").innerText = localStorage.getItem("address");
+            if (localStorage.getItem("hobby")) document.getElementById("hobby").innerText = localStorage.getItem("hobby");
+            if (localStorage.getItem("profileImage")) profileImage.src = localStorage.getItem("profileImage");
+                localStorage.setItem("skills", "HTML, CSS, JavaScript");
+                localStorage.setItem("experience", "2 thang thuc tap web tại công ty ABC");
+
+        };
+    </script>
 </body>
 </html>
