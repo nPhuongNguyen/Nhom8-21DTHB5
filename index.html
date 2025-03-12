@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Cá Nhân - Trần Đại Dương</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="cv-header">
+            <div class="avatar-wrapper">
+                <img id="avatarImage" src="avatar.jpg" alt="Avatar">
+                <input type="file" id="avatarInput" accept="image/*">
+            </div>
+            <h1>Trần Đại Dương</h1>
+            <p class="job-title">Lập Trình Viên Web</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/daiduong" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/daiduong" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="cv-content">
+            <section class="cv-section">
+                <h2>Thông Tin Cá Nhân</h2>
+                <ul>
+                    <li><strong>Email:</strong> trandaiduong1123@gmail.com</li>
+                    <li><strong>Điện thoại:</strong> 0987 654 321</li>
+                    <li><strong>Địa chỉ:</strong> Tp.Thủ Đức, Việt Nam</li>
+                    <li><strong>Website:</strong> <a href="https://www.daiduong.dev" target="_blank">www.daiduong.dev</a></li>
+                </ul>
+            </section>
+
+            <section class="cv-section">
+                <h2>Kỹ Năng</h2>
+                <ul>
+                    <li>- Lập trình HTML, CSS, JavaScript</li>
+                    <li>- Framework: ReactJS, VueJS</li>
+                    <li>- Backend: NodeJS, PHP, MySQL</li>
+                </ul>
+            </section>
+
+            <section class="cv-section">
+                <h2>Kinh Nghiệm Làm Việc</h2>
+                <p><strong>Sinh viên năm 4 trường đại học Công Nghệ</strong></p>
+                <p>Tháng 9/2021 - Hiện tại</p>
+                <ul>
+                    <li>- Làm đồ án cơ sở, chuyên ngành.</li>
+                    <li>- Hoàn thành các khóa học mà trường đưa ra.</li>
+                    <li>- Hợp tác với team thiết kế UI/UX để cải thiện trải nghiệm người dùng.</li>
+                </ul>
+            </section>
+
+            <section class="cv-section">
+                <h2>Dự Án Đã Thực Hiện</h2>
+                <ul>
+                    <li><strong>Website Thương Mại Điện Tử</strong> - Xây dựng hệ thống mua bán trực tuyến với React và Node.js.</li>
+                    <li><strong>Ứng Dụng Quản Lý Công Việc</strong> - Tạo ứng dụng quản lý task bằng Vue.js và Firebase.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <button id="downloadCV">Tải CV PDF</button>
+
+    <footer>
+        <p>&copy; 2025 - Thiết kế bởi Trần Đại Dương</p>
+    </footer>
+
+    <script>
+        document.getElementById("avatarInput").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("avatarImage").src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById("downloadCV").addEventListener("click", function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text("CV Cá Nhân - Trần Đại Dương", 20, 20);
+            doc.text("Lập Trình Viên Web", 20, 30);
+            doc.text("Email: trandaiduong1123@gmail.com", 20, 40);
+            doc.text("Điện thoại: 0987 654 321", 20, 50);
+            doc.text("Địa chỉ: Tp.Thủ Đức, Việt Nam", 20, 60);
+            doc.save("CV_TranDaiDuong.pdf");
+        });
+    </script>
+</body>
+</html>
