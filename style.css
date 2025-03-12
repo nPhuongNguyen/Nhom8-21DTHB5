@@ -1,0 +1,78 @@
+/* Định dạng chung */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Khung hiển thị thông tin */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    transition: 0.3s;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+/* Hình đại diện */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #764ba2;
+    transition: 0.3s;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+/* Tiêu đề */
+h1 {
+    font-size: 22px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Thông tin cá nhân */
+.info {
+    background: #f8f9fa;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #444;
+    transition: 0.3s;
+}
+
+.info strong {
+    color: #333;
+}
+
+.info:hover {
+    background: #e2e6ea;
+}
+
+/* Phần danh sách môn học */
+h1 + .info {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #764ba2;
+}
+
+/* Hiệu ứng khi rê chuột */
+.info:hover {
+    transform: scale(1.05);
+}
