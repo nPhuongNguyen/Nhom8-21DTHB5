@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Chi Tiết</title>
 </head>
+
 <body>
     <h1>Thông Tin Chi Tiết</h1>
     <p><strong>Họ và Tên:</strong> <span id="name"></span></p>
@@ -13,11 +15,15 @@
     <p><strong>SĐT:</strong> <span id="phone"></span></p>
     <p><strong>Quê Quán:</strong> <span id="address"></span></p>
     <p><strong>Sở Thích:</strong> <span id="hobby"></span></p>
+    <p><strong>Kỹ Năng:</strong> <span id="skills"></span></p>
+    <p><strong>Kinh Nghiệm Làm Việc:</strong> <span id="experience"></span></p>
     <p><strong>Ảnh Đại Diện:</strong></p>
     <img id="profileImage" alt="Ảnh đại diện" width="150">
+
     <p>
         <button onclick="window.location.href = 'test.html'">Quay Lại</button>
     </p>
+
     <script>
         // Load thông tin từ LocalStorage
         document.getElementById("name").innerText = localStorage.getItem("name") || "Chưa có thông tin";
@@ -26,7 +32,10 @@
         document.getElementById("phone").innerText = localStorage.getItem("phone") || "Chưa có thông tin";
         document.getElementById("address").innerText = localStorage.getItem("address") || "Chưa có thông tin";
         document.getElementById("hobby").innerText = localStorage.getItem("hobby") || "Chưa có thông tin";
+        document.getElementById("skills").innerText = localStorage.getItem("skills") || "Chưa có thông tin";
+        document.getElementById("experience").innerText = localStorage.getItem("experience") || "Chưa có thông tin";
         document.getElementById("profileImage").src = localStorage.getItem("profileImage") || "a.jpg";
     </script>
 </body>
+
 </html>

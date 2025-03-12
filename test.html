@@ -9,7 +9,7 @@
 </head>
 <body>
     <header id="header">
-        <h1>Chào mừng bạn đến với 1 website chuyên nghiệp :3</h1>
+        <h1>Thông Tin Cá Nhân</h1>
     </header>
 
     <div id="profile">
@@ -99,6 +99,9 @@
             if (localStorage.getItem("address")) document.getElementById("address").innerText = localStorage.getItem("address");
             if (localStorage.getItem("hobby")) document.getElementById("hobby").innerText = localStorage.getItem("hobby");
             if (localStorage.getItem("profileImage")) profileImage.src = localStorage.getItem("profileImage");
+                localStorage.setItem("skills", "HTML, CSS, JavaScript");
+                localStorage.setItem("experience", "2 thang thuc tap web tại công ty ABC");
+
         };
     </script>
 </body>
